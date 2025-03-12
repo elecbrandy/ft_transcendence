@@ -14,5 +14,5 @@ down:
 
 .PHONY: clean
 clean: down
-	docker compose -f $(FILE_PATH) down --rmi all --volumes
-	docker system prune -f
+	docker volume prune -f
+	docker system prune -a -f

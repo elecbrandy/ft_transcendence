@@ -28,13 +28,23 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 if not SECRET_KEY:
     raise ValueError("The DJANGO_SECRET_KEY environment variable is not set")
 
+JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+
+if not JWT_SECRET_KEY:
+    raise ValueError("The JWT_SECRET_KEY environment variable is not set")
+
+JWT_ALGORITHM = 'HS256'
+
+import datetime
+
+JWT_EXPIRATION_DELTA = datetime.timedelta(hours=1)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend', '0.0.0.0']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'backend']
 
 
 # Application definition
@@ -46,7 +56,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'testing',
+    'users',
+    'authentication',
+    'oauth',
+    'matchresult',
+    'friends',
 ]
 
 MIDDLEWARE = [
@@ -134,9 +148,35 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = 'static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# default user model
+
+AUTH_USER_MODEL = "users.User"
+
+# SMTP 설정
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"  # Gmail SMTP 서버
+EMAIL_PORT = 587  # TLS 포트 (보통 587)
+EMAIL_USE_TLS = True  # TLS 사용 여부
+EMAIL_USE_SSL = False  # SSL 사용 여부
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER") # 이메일 계정 (발신자)
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD") # 앱 비밀번호 또는 SMTP 비밀번호
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # 기본 발신자 이메일
+
+# OAuth 2.0 setting : should be saved to a .env file
+OAUTH2_CLIENT_ID = os.getenv("OAUTH2_CLIENT_ID")
+OAUTH2_CLIENT_SECRET = os.getenv("OAUTH2_CLIENT_SECRET")
+OAUTH2_REDIRECT_URI = 'http://localhost:80/oauth-callback/'  # 콜백 URI
+OAUTH2_AUTHORIZATION_URL = 'https://api.intra.42.fr/oauth/authorize'
+OAUTH2_TOKEN_URL = 'https://api.intra.42.fr/oauth/token'
+OAUTH2_API_URL = 'https://api.intra.42.fr/v2/me'
