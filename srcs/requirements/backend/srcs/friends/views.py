@@ -29,7 +29,7 @@ def update_last_activate(func):
 @update_last_activate
 def friend_list(request: HttpRequest) -> JsonResponse:
     user = request.user
-    list = Friend.objects.filter(follower=user)
+    list = Friend.objects.filter(follower=user,  following__is_friend_enabled=True)
     result = []
     for friend in list:
         now = friend.following
@@ -49,19 +49,20 @@ def friend_list(request: HttpRequest) -> JsonResponse:
 @update_last_activate
 def search_users(request: HttpRequest) -> JsonResponse:
     query = request.GET.get('search_query', '')
-    users = User.objects.filter(username__icontains=query).exclude(id=request.user.id)
     result = []
-    for user in users:
-        if user.show_in_search:
-            profile_image = (
-                user.profile_image.url
-                if user.profile_image and user.share_profile_image
-                else None
-            )
-            result.append({
-                'username': user.username,
-                'profile_image': profile_image
-            })
+    if query:
+        users = User.objects.filter(username__icontains=query).exclude(id=request.user.id)
+        for user in users:
+            if user.is_friend_enabled:
+                profile_image = (
+                    user.profile_image.url
+                    if user.profile_image and user.share_profile_image
+                    else None
+                )
+                result.append({
+                    'username': user.username,
+                    'profile_image': profile_image
+                })
     return JsonResponse({'results': result}, status=200)
 
 
@@ -133,3 +134,6 @@ def get_online(request: HttpRequest) -> JsonResponse:
         is_online = u.id in online_users if u.share_online_status else False
         result.append({"username": u.username, "is_online": is_online})
     return JsonResponse({'results': result}, status=200)
+
+def set_offline(user):
+    OnlineList.objects.filter(user=user).delete()

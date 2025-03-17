@@ -3,6 +3,10 @@ import { updateModals } from './components/setting.js'
 
 const trans = {
   en: {
+    // 404 
+    notFound: "The page you requested cannot be found.",
+    toLoginPage: "To the Login page",
+
     // Navbar
     navProfile: "Profile",
     navGamePlay: "Gameplay",
@@ -15,7 +19,8 @@ const trans = {
     loginPasswordHolder: "Enter your password",
     loginBtn: "Submit",
     loginOauthBtn: "42 account",
-    loginSingupBtn: "Sing up",
+    loginSignupBtn: "Sign up",
+    oauth: "Logging in...",
 
     // Verify
     verifyHeader: "Verify Code",
@@ -43,6 +48,7 @@ const trans = {
     losses: "Losses",
     draws: "Draws",
     matchHistory: "Match History",
+    noMatchHistory: "No Match History",
     friends: "Friends",
     setting: "Settings",
     logout: "Logout",
@@ -66,7 +72,7 @@ const trans = {
 
     // Profile Settings Modal - Privacy
     settingModalPrivacy: "Privacy Settings",
-    settingModalPrivacy1: "Show in friend search",
+    settingModalPrivacy1: "Is friend enabled",
     settingModalPrivacy2: "Share profile image",
     settingModalPrivacy3: "Share online status",
 
@@ -150,6 +156,10 @@ const trans = {
   },
 
   ko: {
+    // 404 
+    notFound: "요청하신 페이지를 찾을 수 없습니다.",
+    toLoginPage: "로그인 페이지로",
+
     // Navbar
     navProfile: "프로필",
     navGamePlay: "게임 플레이",
@@ -162,7 +172,8 @@ const trans = {
     loginPasswordHolder: "비밀번호를 입력하세요",
     loginBtn: "로그인",
     loginOauthBtn: "42 계정",
-    loginSingupBtn: "회원가입",
+    loginSignupBtn: "회원가입",
+    oauth: "로그인 중 입니다...",
 
     // Verify
     verifyHeader: "인증 코드",
@@ -193,6 +204,7 @@ const trans = {
     friends: "친구",
     setting: "설정",
     logout: "로그아웃",
+    noMatchHistory: "매치 기록이 없습니다.",
   
     // Profile Settings
     settingUsername: "사용자 이름",
@@ -213,7 +225,7 @@ const trans = {
 
     // Profile Settings Modal - Privacy
     settingModalPrivacy: "개인정보 설정",
-    settingModalPrivacy1: "친구 검색에 표시",
+    settingModalPrivacy1: "친구기능 사용",
     settingModalPrivacy2: "프로필 이미지 공유",
     settingModalPrivacy3: "온라인 상태 표시",
 
@@ -295,6 +307,10 @@ const trans = {
   },
   
   fn: {
+    // 404 
+    notFound: "La page que vous avez demandée est introuvable.",
+    toLoginPage: "Vers la page de connexion",
+    
     // Navbar
     navProfile: "Profil",
     navGamePlay: "Jeu",
@@ -307,7 +323,8 @@ const trans = {
     loginPasswordHolder: "Entrez votre mot de passe",
     loginBtn: "Soumettre",
     loginOauthBtn: "Compte 42",
-    loginSingupBtn: "S'inscrire",
+    loginSignupBtn: "S'inscrire",
+    oauth: "Connexion en cours...",
   
     // Verify
     verifyHeader: "Vérifier le code",
@@ -338,6 +355,7 @@ const trans = {
     friends: "Amis",
     setting: "Paramètres",
     logout: "Déconnexion",
+    noMatchHistory: "Il n'y a pas d'historique de match.",
   
     // Profile Settings
     settingUsername: "Nom d'utilisateur",
@@ -358,7 +376,7 @@ const trans = {
   
     // Profile Settings Modal - Privacy
     settingModalPrivacy: "Paramètres de confidentialité",
-    settingModalPrivacy1: "Apparaître dans la recherche d'amis",
+    settingModalPrivacy1: "Est-ce que l'ami est activé",
     settingModalPrivacy2: "Partager l'image de profil",
     settingModalPrivacy3: "Partager le statut en ligne",
   
