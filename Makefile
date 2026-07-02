@@ -1,4 +1,5 @@
 FILE_PATH=./srcs/docker-compose.yml
+ENV_FILE=./srcs/.env
 
 .PHONY: all
 all:
@@ -6,11 +7,11 @@ all:
 
 .PHONY: up
 up:
-	docker compose -f $(FILE_PATH) up --build -d
+	docker compose --env-file $(ENV_FILE) -f $(FILE_PATH) up --build -d
 
 .PHONY: down
 down:
-	docker compose -f $(FILE_PATH) down
+	docker compose --env-file $(ENV_FILE) -f $(FILE_PATH) down
 
 .PHONY: clean
 clean: down
