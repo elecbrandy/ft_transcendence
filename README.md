@@ -17,10 +17,10 @@
 
 ## 🏓 `ft_transcendence` 란?
 
-- **`ft_transcendence`** 는 브라우저에서 Pong 게임을 플레이하고 사용자 계정, 프로필, 친구, 경기 이력을 관리할 수 있는 웹 서비스입니다.
+- **`ft_transcendence`** 는 브라우저에서 Pong 게임을 플레이하는 웹 서비스 입니다.
+- 사용자 계정, 프로필, 친구, 경기 이력을 관리할 수 있습니다.
 - 프론트엔드는 정적 SPA로 로그인, 회원가입, 프로필, 게임 옵션, 토너먼트, 게임 화면을 제공합니다.
-- 백엔드는 Django API 서버로 JWT 쿠키 인증, 이메일 OTP 2FA, 42 Intra OAuth, 친구/온라인 상태, 경기 결과 저장을 처리합니다.
-- nginx, gunicorn, PostgreSQL을 Docker Compose로 묶어 HTTPS 기반 로컬 실행 환경을 구성했습니다.
+- 백엔드는 Django API 서버로 JWT 쿠키 인증, 이메일 OTP 2FA, 42 OAuth, 경기 결과 저장을 처리합니다.
 
 <br>
 <br>
